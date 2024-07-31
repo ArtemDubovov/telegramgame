@@ -55,7 +55,7 @@ class Example extends Phaser.Scene
         //  Display the game stats
         info = this.add.text(10, 10, '', { font: '48px Arial', fill: '#000000' });
 
-        timer = this.time.addEvent({ delay: 10000, callback: this.gameOver, callbackScope: this });
+        timer = this.time.addEvent({ delay: 300000, callback: this.gameOver, callbackScope: this });
     }
 
     update ()
@@ -87,6 +87,7 @@ const config = {
 };
 
 const game = new Phaser.Game(config);
+
 
     </script>
 
