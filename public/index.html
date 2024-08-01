@@ -3,92 +3,184 @@
 <head>
     <script src="https://cdn.jsdelivr.net/npm/phaser@3.60.0/dist/phaser-arcade-physics.min.js"></script>
 </head>
-<body>
+<body style="padding: 0px; margin: 0px; background-color: gray;">
 
     <script>
-let info;
-let timer;
-let alive = 0;
+        const WINDOW_HEIGHT = window.innerHeight;
+        const WINDOW_WIDTH = window.innerWidth;
+        var score = 0;
+        var scoreText;
+        var config = {
+            type: Phaser.AUTO,
+            width: window.innerWidth - 20,
+            height: window.innerHeight - 20,
+            physics: {
+                default: 'arcade',
+                arcade: {
+                    gravity: { y: 300 },
+                    debug: false
+                }
+            },
+            scene: {
+                preload: preload,
+                create: create,
+                update: update
+            }
+        };
 
-class Example extends Phaser.Scene
-{
-    constructor ()
-    {
-        super();
-    }
+        var game = new Phaser.Game(config);
 
-    preload ()
-    {
-        this.load.image('bg', 'assets/skies/sky4.png');
-        this.load.image('crate', 'assets/sprites/crate.png');
-    }
-
-    create ()
-    {
-        //  How many crates can you click on in 10 seconds?
-        this.add.image(400, 300, 'bg');
-
-        //  Create a bunch of images
-        for (var i = 0; i < 64; i++)
+        function preload ()
         {
-            var x = Phaser.Math.Between(0, 800);
-            var y = Phaser.Math.Between(0, 600);
-
-            var box = this.add.image(x, y, 'crate');
-
-            //  Make them all input enabled
-            box.setInteractive();
-
-            //  The images will dispatch a 'clicked' event when they are clicked on
-            box.on('clicked', this.clickHandler, this);
-
-            alive++;
+            this.load.image('sky', 'assets/sky.png');
+            this.load.image('ground', 'assets/platform.png');
+            this.load.image('star', 'assets/star.png');
+            this.load.image('bomb', 'assets/bomb.png');
+            this.load.spritesheet('dude',
+                'assets/dude.png',
+                { frameWidth: 32, frameHeight: 48 }
+            );
         }
 
-        //  If a Game Object is clicked on, this event is fired.
-        //  We can use it to emit the 'clicked' event on the game object itself.
-        this.input.on('gameobjectup', function (pointer, gameObject)
+        function create ()
         {
-            gameObject.emit('clicked', gameObject);
-        }, this);
+            // STATIC
+            this.add.image(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, 'sky');
+            platforms = this.physics.add.staticGroup();
+            let scale = WINDOW_WIDTH / 400;
+            platforms.create(WINDOW_WIDTH / 2, WINDOW_HEIGHT, 'ground').setScale(scale, 5).refreshBody();
 
-        //  Display the game stats
-        info = this.add.text(10, 10, '', { font: '48px Arial', fill: '#000000' });
+            platforms.create(GetFlexWidth(8), GetFlexHeight(7), 'ground').setScale(2, 1);
+            platforms.create(GetFlexWidth(1), GetFlexHeight(5), 'ground').setScale(2, 1);
+            platforms.create(GetFlexWidth(9), GetFlexHeight(3), 'ground').setScale(2, 1);
+            // PLAYER
+            player = this.physics.add.sprite(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, 'dude');
+            player.body.setGravityY(300);
+            player.setBounce(0.2);
+            player.setCollideWorldBounds(true);
+            this.physics.add.collider(player, platforms);
+            this.anims.create({
+                key: 'left',
+                frames: this.anims.generateFrameNumbers('dude', { start: 0, end: 3 }),
+                frameRate: 10,
+                repeat: -1
+            });
 
-        timer = this.time.addEvent({ delay: 300000, callback: this.gameOver, callbackScope: this });
-    }
+            this.anims.create({
+                key: 'turn',
+                frames: [ { key: 'dude', frame: 4 } ],
+                frameRate: 20
+            });
 
-    update ()
-    {
-        info.setText('Alive: ' + alive + '\nTime: ' + Math.floor(10000 - timer.getElapsed()));
-    }
+            this.anims.create({
+                key: 'right',
+                frames: this.anims.generateFrameNumbers('dude', { start: 5, end: 8 }),
+                frameRate: 10,
+                repeat: -1
+            });
+            // START
+            stars = this.physics.add.group({
+                key: 'star',
+                repeat: 1,
+                setXY: { x: 600, y: 24, stepX: 70 }
+            });
 
-    clickHandler (box)
-    {
-        alive--;
+            stars.children.iterate(function (child) {
 
-        box.off('clicked', this.clickHandler);
-        box.input.enabled = false;
-        box.setVisible(false);
-    }
+                child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
 
-    gameOver ()
-    {
-        this.input.off('gameobjectup');
-    }
-}
+            });
+            this.physics.add.collider(stars, platforms);
+            this.physics.add.overlap(player, stars, collectStar, null, this);
+            // DATA
+            scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#FFF' });
+            // BOMBS
+            bombs = this.physics.add.group();
 
-const config = {
-    type: Phaser.AUTO,
-    parent: 'phaser-example',
-    width: 800,
-    height: 600,
-    scene: Example
-};
+            this.physics.add.collider(bombs, platforms);
 
-const game = new Phaser.Game(config);
+            this.physics.add.collider(player, bombs, hitBomb, null, this);
+        }
 
+        function update ()
+        {
+            cursors = this.input.keyboard.createCursorKeys();
+            if (cursors.left.isDown)
+            {
+                player.setVelocityX(-160);
 
+                player.anims.play('left', true);
+            }
+            else if (cursors.right.isDown)
+            {
+                player.setVelocityX(160);
+
+                player.anims.play('right', true);
+            }
+            else
+            {
+                player.setVelocityX(0);
+
+                player.anims.play('turn');
+            }
+
+            if (cursors.up.isDown && player.body.touching.down)
+            {
+                player.setVelocityY(-330);
+            }
+        }
+
+        function GetFlexWidth(num)
+        {
+            if (0 <= num && num <= 10) {
+                
+                return WINDOW_WIDTH / 10 * num;
+            }
+            return 0;
+
+        }
+        function GetFlexHeight(num)
+        {
+            if (0 < num < 10 ) {
+                
+                return WINDOW_HEIGHT / 10 * num;
+            }
+            return 0;
+        }
+        function collectStar (player, star)
+        {
+            star.disableBody(true, true);
+
+            score += 10;
+            scoreText.setText('Score: ' + score);
+
+            if (stars.countActive(true) === 0)
+            {
+                stars.children.iterate(function (child) {
+
+                    child.enableBody(true, child.x, 0, true, true);
+
+                });
+
+                var x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
+
+                var bomb = bombs.create(x, 16, 'bomb');
+                bomb.setBounce(1);
+                bomb.setCollideWorldBounds(true);
+                bomb.setVelocity(Phaser.Math.Between(-200, 200), 20);
+
+            }
+        }
+        function hitBomb (player, bomb)
+        {
+            this.physics.pause();
+
+            player.setTint(0xff0000);
+
+            player.anims.play('turn');
+
+            gameOver = true;
+        }
     </script>
 
 </body>
