@@ -1,0 +1,36 @@
+.main_block-title {
+  background-color: #EEEEEE;
+  border-bottom-left-radius: 14px;
+  border-bottom-right-radius: 14px;
+  padding: 113px 0px 0px 0px;
+}
+
+.main-title {
+  padding-left: 12px;
+  display: inline-block;
+  max-width: 306px;
+  font-family: 'Inter';
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 40px;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.main_links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
+  padding: 85px 0px 20px;
+}
+
+.main_links_button {
+  min-width: 120px;
+  padding: 13px 4px;
+  text-align: middle;
+  border-radius: 24px;
+  border: none;
+  background-color: #fff;
+}
