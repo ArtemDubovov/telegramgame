@@ -1,11 +1,17 @@
 import Header from '../../../components/Header/Header';
 import Footer from '../../../components/Footer/Footer';
 
+import { questions } from './data';
+
 import './style.css';
 import { useState } from 'react';
 
 function ComeUpWithItBrandName() {
   const [countPage, setCountPage] = useState(0);
+  const [countQuestion, setCountQuestion] = useState(0);
+  const [currentAnswer, setCurrentAnswer] = useState(null); // true or false
+  const [score, setScore] = useState(0);
+  const [isFinishGame, setIsFinishGame] = useState(false);
   return (
     <div className="comeUpWithItBrandName">
       <Header title='Придумай имя бренда'></Header>
@@ -38,7 +44,29 @@ function ComeUpWithItBrandName() {
                     <button className='comeUpWithItBrandName_button' onClick={() => setCountPage(2)}>Вперед</button>
                 </>
             :
-            countPage === 2 ? <></>
+            countPage === 2 ?
+                <>
+                    <h2>Эта цель поставлена по методике SMART?</h2>
+                    <div className='comeUpWithItBrandName_question'>{questions[countQuestion].text}</div>
+                    <div className='comeUpWithItBrandName_answerTable'></div>
+                    <div className='comeUpWithItBrandName_answerButtons'>
+                        <button 
+                            onClick={() => {
+                                setCurrentAnswer(true);
+                            }}
+                            className='comeUpWithItBrandName_answerButtons__button'>
+                                Да
+                        </button>
+                        <div className={
+                            currentAnswer === true ? 'comeUpWithItBrandName_toogle comeUpWithItBrandName_toogle--true'
+                            : currentAnswer === false ? 'comeUpWithItBrandName_toogle comeUpWithItBrandName_toogle--false'
+                            : 'comeUpWithItBrandName_toogle'
+                        }></div>
+                        <button onClick={() => setCurrentAnswer(false)} className='comeUpWithItBrandName_answerButtons__button'>
+                            Нет
+                        </button>
+                    </div>
+                </>
             : <></>}
         </div>
       <Footer index={2}></Footer>
