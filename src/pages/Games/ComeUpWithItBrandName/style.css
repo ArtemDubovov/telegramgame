@@ -29,3 +29,39 @@
     font-weight: 700;
     font-size: 16px;
 }
+
+.comeUpWithItBrandName_subtitle {
+    max-width: 262px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+}
+.comeUpWithItBrandName_context {
+    display: block;
+    padding: 14px 20px 0px;
+    text-align: center;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.comeUpWithItBrandName_example {
+    background-color: #A2DEE6;
+    padding: 12px;
+    text-align: center;
+
+    margin: 0px 30px;
+    border-radius: 20px;
+    margin-bottom: 5px;
+}
+
+.comeUpWithItBrandName_example:first-child {
+    margin-top: 20px;
+}
+
+.comeUpWithItBrandName_example > p {
+    padding: 0px;
+    margin: 0px;
+}
