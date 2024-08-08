@@ -99,7 +99,7 @@
 /* BUTTONS */
 
 .comeUpWithItBrandName_answerButtons {
-    margin: 12px 34px;
+    margin: 12px auto;
     border-radius: 20px;
     background-color: #100F17;
     height: 42px;
