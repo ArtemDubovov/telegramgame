@@ -13,7 +13,7 @@ console.log(data);
 
 function Footer({index}) {
   return (
-    <footer className="Footer">
+    <footer className="footer">
         <nav>
           <ul className="footer_menu">
             {
