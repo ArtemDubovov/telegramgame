@@ -16,9 +16,8 @@
     width: 77px;
     border: 1px solid #F3F5F4;
     border-radius: 18px;
-    background-color: #000;
+    background-color: transparent;
     cursor: pointer;
-    background-color: #000;
     transition: 1s all;
 
 }
