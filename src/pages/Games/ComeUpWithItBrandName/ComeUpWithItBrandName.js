@@ -60,15 +60,15 @@ function ComeUpWithItBrandName() {
                     <div className='comeUpWithItBrandName_answerTable'>
                         {
                             currentAnswer === null ? <img src={imageQuestionWait} alt="wait answer"></img> :
-                            currentAnswer === true ?
+                            currentAnswer === questions[countQuestion].answer ?
                             <>
-                                <img src={imageQuestionCorrect} alt="wait answer"></img>
+                                <img src={imageQuestionCorrect} alt="correct answer"></img>
                                 <p>👍Верно!
                                 Все 5 критериев при постановке цели учтены!</p>
                             </>
                             :
                             <>
-                                <img src={imageQuestionWrong} alt="wait answer"></img>
+                                <img src={imageQuestionWrong} alt="wrong answer"></img>
                                 <p>🚫 Ошибочка...
                                 Цель по SMART. Все 5 критериев учтены!</p>
                             </>
