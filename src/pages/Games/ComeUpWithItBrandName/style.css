@@ -19,6 +19,8 @@
 }
 
 .comeUpWithItBrandName_button {
+    text-align: center;
+    text-decoration: none;
     display: block;
     margin: 0 auto;
     border: none;
@@ -29,6 +31,8 @@
     font-weight: 700;
     font-size: 16px;
 }
+
+/* GAME */
 
 .comeUpWithItBrandName_subtitle {
     max-width: 262px;
@@ -66,6 +70,32 @@
     margin: 0px;
 }
 
+.comeUpWithItBrandName_gameTitle {
+    padding: 0px 65px;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px;
+    text-align: center;
+}
+
+.comeUpWithItBrandName_question {
+    background-color: #A2DEE6;
+    border-radius: 20px;
+    padding: 18px 20px;
+    margin: 36px 30px;
+}
+
+.comeUpWithItBrandName_answerTable {
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.comeUpWithItBrandName_finishText {
+    margin: 20px;
+}
+
 /* BUTTONS */
 
 .comeUpWithItBrandName_answerButtons {
@@ -91,6 +121,11 @@
     border: none;
     cursor: pointer;
     color: #A2DEE6;
+    font-weight: 700;
+}
+
+.comeUpWithItBrandName_answerButtons__button--check {
+    color: black;
 }
 
 .comeUpWithItBrandName_toogle {
@@ -116,9 +151,9 @@
 }
 
 .comeUpWithItBrandName_toogle--false {
-    transform: translateX(105px);
+    transform: translateX(106px);
 }
 
 .comeUpWithItBrandName_toogle--true {
-    transform: translateX(-105px);
+    transform: translateX(-106px);
 }

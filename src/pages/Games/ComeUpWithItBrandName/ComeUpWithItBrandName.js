@@ -6,7 +6,16 @@ import { questions } from './data';
 import './style.css';
 import { useState } from 'react';
 
+import imageQuestionWait from './assets/answer.png';
+import imageQuestionCorrect from './assets/correct.png';
+import imageQuestionWrong from './assets/wrong.png';
+import { Link } from 'react-router-dom';
+
+
 function ComeUpWithItBrandName() {
+  const [styleBtnLeft, setStyleBtnLeft] = useState('comeUpWithItBrandName_answerButtons__button');
+  const [styleBtnRight, setStyleBtnRight] = useState('comeUpWithItBrandName_answerButtons__button');
+  const [canChoice, setCanChoice] = useState(true);
   const [countPage, setCountPage] = useState(0);
   const [countQuestion, setCountQuestion] = useState(0);
   const [currentAnswer, setCurrentAnswer] = useState(null); // true or false
@@ -46,26 +55,74 @@ function ComeUpWithItBrandName() {
             :
             countPage === 2 ?
                 <>
-                    <h2>Эта цель поставлена по методике SMART?</h2>
+                    <h2 className='comeUpWithItBrandName_gameTitle'>Эта цель поставлена по методике SMART?</h2>
                     <div className='comeUpWithItBrandName_question'>{questions[countQuestion].text}</div>
-                    <div className='comeUpWithItBrandName_answerTable'></div>
+                    <div className='comeUpWithItBrandName_answerTable'>
+                        {
+                            currentAnswer === null ? <img src={imageQuestionWait} alt="wait answer"></img> :
+                            currentAnswer === true ?
+                            <>
+                                <img src={imageQuestionCorrect} alt="wait answer"></img>
+                                <p>👍Верно!
+                                Все 5 критериев при постановке цели учтены!</p>
+                            </>
+                            :
+                            <>
+                                <img src={imageQuestionWrong} alt="wait answer"></img>
+                                <p>🚫 Ошибочка...
+                                Цель по SMART. Все 5 критериев учтены!</p>
+                            </>
+                        }
+                    </div>
                     <div className='comeUpWithItBrandName_answerButtons'>
                         <button 
                             onClick={() => {
-                                setCurrentAnswer(true);
+                                if (!canChoice) return;
+                                if (countQuestion + 1 >= questions.length) setIsFinishGame(true);
+                                setCurrentAnswer(() => true);
+                                setStyleBtnLeft(() => styleBtnLeft + ' comeUpWithItBrandName_answerButtons__button--check');
+                                setCanChoice(() => false);
+                                if (questions[countQuestion].answer === true) setScore(() => score + 1);
                             }}
-                            className='comeUpWithItBrandName_answerButtons__button'>
+                            className={styleBtnLeft}>
                                 Да
                         </button>
                         <div className={
-                            currentAnswer === true ? 'comeUpWithItBrandName_toogle comeUpWithItBrandName_toogle--true'
-                            : currentAnswer === false ? 'comeUpWithItBrandName_toogle comeUpWithItBrandName_toogle--false'
+                            currentAnswer && questions[countQuestion].answer ? 'comeUpWithItBrandName_toogle comeUpWithItBrandName_toogle--true comeUpWithItBrandName_toogle--correct' :
+                            currentAnswer && !questions[countQuestion].answer ? 'comeUpWithItBrandName_toogle comeUpWithItBrandName_toogle--true comeUpWithItBrandName_toogle--wrong'
+                            : currentAnswer === false && questions[countQuestion].answer ? 'comeUpWithItBrandName_toogle comeUpWithItBrandName_toogle--false comeUpWithItBrandName_toogle--wrong'
+                            : currentAnswer === false && !questions[countQuestion].answer ? 'comeUpWithItBrandName_toogle comeUpWithItBrandName_toogle--false comeUpWithItBrandName_toogle--correct'
                             : 'comeUpWithItBrandName_toogle'
                         }></div>
-                        <button onClick={() => setCurrentAnswer(false)} className='comeUpWithItBrandName_answerButtons__button'>
+                        <button onClick={() => {
+                            if (!canChoice) return;
+                            if (countQuestion + 1 >= questions.length) setIsFinishGame(true);
+                            setCurrentAnswer(() => false)
+                            setStyleBtnRight(() => styleBtnRight + ' comeUpWithItBrandName_answerButtons__button--check');
+                            setCanChoice(() => false);
+                            if (questions[countQuestion].answer === false) setScore(() => score + 1);
+                        }}
+                        className={styleBtnRight}>
                             Нет
                         </button>
+                        
                     </div>
+                    {currentAnswer !== null && countQuestion + 1 < questions.length && <button className='comeUpWithItBrandName_button' onClick={() => {
+                        
+                        setCanChoice(() => true);
+                        setCountQuestion(() => countQuestion + 1);
+                        setCurrentAnswer(() => null);
+                        setStyleBtnLeft(() => 'comeUpWithItBrandName_answerButtons__button');
+                        setStyleBtnRight(() => 'comeUpWithItBrandName_answerButtons__button');
+                    }}>Далее</button>}
+                    {
+                        isFinishGame && 
+                        <>
+                            <p className='comeUpWithItBrandName_finishText'>Поздравляю, ты ответил на все вопросы. Из них верно: {score}, неверно: {questions.length - score}.</p>
+                            <button className='comeUpWithItBrandName_button' onClick={() => window.location.reload()}>Повторить</button>
+                        </>
+
+                    }
                 </>
             : <></>}
         </div>
