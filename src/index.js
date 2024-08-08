@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {
   createHashRouter,
-  HashRouter,
   RouterProvider
 } from 'react-router-dom';
 
@@ -11,7 +10,7 @@ import './styles/index.css';
 
 import Main from './pages/Main/Main';
 import App2 from './pages/App2';
-import App3 from './pages/App3';
+import Games from './pages/Games/Games';
 import App4 from './pages/App4';
 
 
@@ -26,7 +25,7 @@ const router = createHashRouter([
   },
   {
     path: "/3",
-    element: <App3 />,
+    element: <Games />,
   },
   {
     path: "/4",

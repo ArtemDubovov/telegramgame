@@ -6,7 +6,6 @@ import {data} from './data.js';
 console.log(data);
 
 function Footer({index}) {
-  console.log(index, data[0].index);
   return (
     <footer className="Footer">
         <nav>
