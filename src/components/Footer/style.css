@@ -27,3 +27,7 @@
 .footer_menu > li {
     list-style-type: none;
 }
+
+.footer_button--active {
+    background-color: #F3F5F4;
+}

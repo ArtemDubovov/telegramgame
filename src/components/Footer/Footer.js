@@ -1,23 +1,22 @@
 import { Link } from "react-router-dom";
 import './style.css';
 
-function Footer() {
+import {data} from './data.js';
+
+console.log(data);
+
+function Footer({index}) {
   return (
     <footer className="Footer">
         <nav>
           <ul className="footer_menu">
-            <li>
-              <Link className="footer_button" to="/"></Link>
-            </li>
-            <li>
-              <Link className="footer_button" to="/2"></Link>
-            </li>
-            <li>
-              <Link className="footer_button" to="/3"></Link>
-            </li>
-            <li>
-              <Link className="footer_button" to="/4"></Link>
-            </li>
+            {
+              data.map(el => 
+                <li>
+                  <Link className={el.index == index ? 'footer_button footer_button--active' : 'footer_button'} to={el.path}></Link>
+                </li>
+              )
+            }
           </ul>
         </nav>
     </footer>

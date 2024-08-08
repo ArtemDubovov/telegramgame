@@ -16,7 +16,7 @@ function Main() {
           <button className='main_links_button'>Пример</button>
         </div>
       </section>
-      <Footer></Footer>
+      <Footer index='0'></Footer>
     </div>
   );
 }
