@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/telegramgame/static/css/main.4a9c3716.css",
-    "main.js": "/telegramgame/static/js/main.947158c6.js",
+    "main.css": "/telegramgame/static/css/main.ea299dc9.css",
+    "main.js": "/telegramgame/static/js/main.c3e2944e.js",
     "index.html": "/telegramgame/index.html",
-    "main.4a9c3716.css.map": "/telegramgame/static/css/main.4a9c3716.css.map",
-    "main.947158c6.js.map": "/telegramgame/static/js/main.947158c6.js.map"
+    "main.ea299dc9.css.map": "/telegramgame/static/css/main.ea299dc9.css.map",
+    "main.c3e2944e.js.map": "/telegramgame/static/js/main.c3e2944e.js.map"
   },
   "entrypoints": [
-    "static/css/main.4a9c3716.css",
-    "static/js/main.947158c6.js"
+    "static/css/main.ea299dc9.css",
+    "static/js/main.c3e2944e.js"
   ]
 }
