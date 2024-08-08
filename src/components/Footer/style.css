@@ -29,5 +29,6 @@
 }
 
 .footer_button--active {
+    transition: .3s all;
     background-color: #F3F5F4;
 }

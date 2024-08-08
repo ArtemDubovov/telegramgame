@@ -16,7 +16,17 @@ function Main() {
           <button className='main_links_button'>Пример</button>
         </div>
       </section>
-      <Footer index='0'></Footer>
+      <section className='main_block main_block--yellow'>
+        <h2 className='main_block_title'>Позиционирование</h2>
+      </section>
+      <section className='main_block main_block--green'>
+        <div className='main_block_info'>
+          <h2 className='main_block_title'>Ты почти прошел 
+          игру “SMART”</h2>
+          <p className='main_block_progress'>82%</p>
+        </div>
+      </section>
+      <Footer index={0}></Footer>
     </div>
   );
 }

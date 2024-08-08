@@ -6,14 +6,15 @@ import {data} from './data.js';
 console.log(data);
 
 function Footer({index}) {
+  console.log(index, data[0].index);
   return (
     <footer className="Footer">
         <nav>
           <ul className="footer_menu">
             {
               data.map(el => 
-                <li>
-                  <Link className={el.index == index ? 'footer_button footer_button--active' : 'footer_button'} to={el.path}></Link>
+                <li key={el.index}> 
+                  <Link className={el.index === index ? 'footer_button footer_button--active' : 'footer_button'} to={el.path}></Link>
                 </li>
               )
             }

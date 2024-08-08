@@ -1,7 +1,7 @@
 .main_block-title {
   background-color: #EEEEEE;
-  border-bottom-left-radius: 14px;
-  border-bottom-right-radius: 14px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
   padding: 113px 0px 0px 0px;
 }
 
@@ -33,4 +33,40 @@
   border-radius: 24px;
   border: none;
   background-color: #fff;
+  color: #000;
+}
+
+.main_block  {
+  margin-top: 5px;
+  padding: 15px;
+  border-radius: 20px;
+}
+
+.main_block--yellow {
+  background-color: #F9E398;
+}
+
+.main_block_title {
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0px
+}
+
+.main_block--green {
+
+  background-color: #A2DEE6;
+}
+
+.main_block_info {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+}
+
+.main_block_progress {
+  margin: 0px;
+  font-weight: 700;
+  font-size: 58px;
+  line-height: 50px;
 }
