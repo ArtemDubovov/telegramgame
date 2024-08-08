@@ -29,3 +29,10 @@
     background-color: #000;
 }
 
+.header_title {
+    border-radius: 10px;
+    background-color: #000;
+    padding: 12px 15px;
+    color: #F3F5F4;
+    height: 20px;
+}

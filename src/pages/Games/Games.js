@@ -1,6 +1,8 @@
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 
+import { Link } from 'react-router-dom';
+
 import './style.css';
 
 function Games() {
@@ -27,10 +29,10 @@ function Games() {
         <div className='games_block_big'>
           <h2 className='games_block_title'>Разработай сильное УТП</h2>
         </div>
-        <div className='games_block_big'>
+        <Link to={'/ComeUpWithItBrandName'} className='games_block_big'>
           <h2 className='games_block_title'>Придумай
           имя бренда</h2>
-        </div>
+        </Link>
       </section>
       <Footer index={2}></Footer>
     </div>

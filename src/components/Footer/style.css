@@ -1,6 +1,8 @@
 .footer_button {
     padding: 0px;
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     list-style-type: none;
     height: 42px;
     width: 77px;
@@ -10,6 +12,7 @@
     cursor: pointer;
     background-color: #000;
     transition: 1s all;
+
 }
 
 .footer_menu {

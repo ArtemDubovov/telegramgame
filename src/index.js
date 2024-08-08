@@ -13,6 +13,8 @@ import App2 from './pages/App2';
 import Games from './pages/Games/Games';
 import App4 from './pages/App4';
 
+import ComeUpWithItBrandName from './pages/Games/ComeUpWithItBrandName/ComeUpWithItBrandName';
+
 
 const router = createHashRouter([
   {
@@ -30,6 +32,10 @@ const router = createHashRouter([
   {
     path: "/4",
     element: <App4 />,
+  },
+  {
+    path: "/ComeUpWithItBrandName",
+    element: <ComeUpWithItBrandName />
   }
 ]);
 

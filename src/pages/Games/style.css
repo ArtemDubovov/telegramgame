@@ -57,7 +57,9 @@
   .games_block_title {
     font-size: 20px;
     font-weight: 500;
-    margin: 0px
+    margin: 0px;
+    text-decoration: none;
+    color: #000;
   }
   
   .games_block--green {
@@ -87,6 +89,7 @@
 }
 
 .games_block_big {
+    text-decoration: none;
     margin-top: 5px;
     padding: 15px;
     border-radius: 20px;
