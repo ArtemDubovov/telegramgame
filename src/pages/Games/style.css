@@ -95,8 +95,9 @@
     border-radius: 20px;
     background-color: #F1E0C6;
     position: relative;
-    width: 46%;
+    width: 50%;
     height: 0;
     padding-bottom: 45.932%;
-    max-width: 300px;
+    max-width: 500px;
+    max-height: 500px;
 }

@@ -28,7 +28,10 @@ function ComeUpWithItBrandName() {
             {
             countPage === 0 ? 
                 <>
-                    <h1 className='comeUpWithItBrandName_title'>Есть такая модель для постановки конкретных целей — SMART</h1>
+                    <div className='comeUpWithItBrandName_title'>
+                        <h1 className='comeUpWithItBrandName_title'>Есть такая модель для постановки конкретных целей — SMART</h1>
+                        <img className='comeUpWithItBrandName_title_img' src={imageQuestionWait} alt="wizard"></img>
+                    </div>
                     <button className='comeUpWithItBrandName_button' onClick={() => setCountPage(1)}>Вперед</button>
                 </> :
             countPage === 1 ?
@@ -63,13 +66,13 @@ function ComeUpWithItBrandName() {
                             currentAnswer === questions[countQuestion].answer ?
                             <>
                                 <img src={imageQuestionCorrect} alt="correct answer"></img>
-                                <p>👍Верно!
+                                <p>👍Верно! <br />
                                 Все 5 критериев при постановке цели учтены!</p>
                             </>
                             :
                             <>
                                 <img src={imageQuestionWrong} alt="wrong answer"></img>
-                                <p>🚫 Ошибочка...
+                                <p>🚫 Ошибочка...<br />
                                 Цель по SMART. Все 5 критериев учтены!</p>
                             </>
                         }
