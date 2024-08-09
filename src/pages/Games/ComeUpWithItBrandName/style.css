@@ -192,3 +192,10 @@
 .comeUpWithItBrandName_toogle--true {
     transform: translateX(-104px);
 }
+
+.gameWindow > .comeUpWithItBrandName_button {
+    position: fixed;
+    bottom: 10vh; /* Находим «золотую середину» */
+    left: 50%; /* Размещаем элемент строго по центру */
+    transform: translate(-50%, -50%); /* Доизменяем положение до идеала */
+}
