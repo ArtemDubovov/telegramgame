@@ -1,5 +1,6 @@
 .comeUpWithItBrandName {
-    height: 100vh;
+    min-height: 100vh;
+    height: auto;
     background-color: #F1E0C6;
     padding-bottom: 160px;
 }
