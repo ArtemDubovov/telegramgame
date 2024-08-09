@@ -13,8 +13,6 @@ import {data} from './data.js';
 const listIconsActive = [ic0a, ic1a, ic2a, ic3a];
 const listIcons = [ic0, ic1, ic2, ic3];
 
-console.log(data);
-
 function Footer({index}) {
   return (
     <footer className="footer">
