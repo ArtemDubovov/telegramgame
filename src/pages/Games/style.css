@@ -45,11 +45,54 @@
   }
   
   .games_block  {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-top: 5px;
     padding: 15px;
     border-radius: 20px;
   }
-  
+
+  .block_play {
+    flex: 0 0 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 42px;
+    height: 42px;
+    background-color: #F3F5F4;
+    border-radius: 50%;
+  }
+
+  /* WIZARDS */
+
+  .games_block_wizhandup {
+    position: absolute;
+    left: 243px;
+    top: 10px;
+  }
+
+  .games_block_wizdef {
+    position: absolute;
+    left: 256px;
+    top: 10px;
+  }
+
+  .games_block_wizthinking {
+    position: absolute;
+    left: 71px;
+    bottom: 0px;
+  }
+
+  .games_block_wizpower {
+    position: absolute;
+    left: 16px;
+    bottom: 0px;
+  }
+
+  /* ------------------------------------------------------------------- */
+
   .games_block--yellow {
     background-color: #F9E398;
   }
@@ -89,6 +132,8 @@
 }
 
 .games_block_big {
+    display: flex;
+    justify-content: space-between;
     text-decoration: none;
     margin-top: 5px;
     padding: 15px;
@@ -100,4 +145,14 @@
     padding-bottom: 45.932%;
     max-width: 500px;
     max-height: 500px;
+}
+
+.games_block_big > .block_play {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.games_block_big--green {
+  background-color: #CCDEB9;
 }
