@@ -6,9 +6,9 @@ import { questions } from './data';
 import './style.css';
 import { useState } from 'react';
 
-import imageQuestionWait from './assets/answer.png';
-import imageQuestionCorrect from './assets/correct.png';
-import imageQuestionWrong from './assets/wrong.png';
+import imageQuestionWait from './assets/answer.svg';
+import imageQuestionCorrect from './assets/correct.svg';
+import imageQuestionWrong from './assets/wrong.svg';
 import { Link } from 'react-router-dom';
 
 
