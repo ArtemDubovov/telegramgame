@@ -193,9 +193,20 @@
     transform: translateX(-104px);
 }
 
-.gameWindow > .comeUpWithItBrandName_button {
-    position: fixed;
+.comeUpWithItBrandName_button--game {
+    position: absolute;
     bottom: 10vh; /* Находим «золотую середину» */
     left: 50%; /* Размещаем элемент строго по центру */
     transform: translate(-50%, -50%); /* Доизменяем положение до идеала */
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    margin: 0 auto;
+    border: none;
+    background-color: #A2DEE6;
+    color: #100F17;
+    padding: 9px 12px 10px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 16px;
 }

@@ -110,7 +110,7 @@ function ComeUpWithItBrandName() {
                         </button>
                         
                     </div>
-                    {currentAnswer !== null && countQuestion + 1 < questions.length && <button className='comeUpWithItBrandName_button' onClick={() => {
+                    {currentAnswer !== null && countQuestion + 1 < questions.length && <button className='comeUpWithItBrandName_button--game' onClick={() => {
                         
                         setCanChoice(() => true);
                         setCountQuestion(() => countQuestion + 1);
@@ -122,7 +122,7 @@ function ComeUpWithItBrandName() {
                         isFinishGame && 
                         <>
                             <p className='comeUpWithItBrandName_finishText'>Поздравляю, ты ответил на все вопросы. Из них верно: {score}, неверно: {questions.length - score}.</p>
-                            <button className='comeUpWithItBrandName_button' onClick={() => window.location.reload()}>Повторить</button>
+                            <button className='comeUpWithItBrandName_button--game' onClick={() => window.location.reload()}>Повторить</button>
                         </>
 
                     }
