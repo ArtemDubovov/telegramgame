@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/telegramgame/static/css/main.51fc411b.css",
-    "main.js": "/telegramgame/static/js/main.2181c990.js",
+    "main.css": "/telegramgame/static/css/main.9bffc139.css",
+    "main.js": "/telegramgame/static/js/main.d677c663.js",
     "static/media/wiz-handup.svg": "/telegramgame/static/media/wiz-handup.d5cbbbebcf01ee7961600606e15f6d96.svg",
     "static/media/wrong.svg": "/telegramgame/static/media/wrong.2fc490f0d2bc213e57788788ed54ecc5.svg",
     "static/media/wiz-power.svg": "/telegramgame/static/media/wiz-power.3fe839393e24dd55e7eaf07f99da0a16.svg",
@@ -11,11 +11,11 @@
     "static/media/answer.svg": "/telegramgame/static/media/answer.842f2daa29ee15d434b8e6a4fcc87700.svg",
     "index.html": "/telegramgame/index.html",
     "static/media/triangle.svg": "/telegramgame/static/media/triangle.b17adca53c627d620c61b98a35e8da90.svg",
-    "main.51fc411b.css.map": "/telegramgame/static/css/main.51fc411b.css.map",
-    "main.2181c990.js.map": "/telegramgame/static/js/main.2181c990.js.map"
+    "main.9bffc139.css.map": "/telegramgame/static/css/main.9bffc139.css.map",
+    "main.d677c663.js.map": "/telegramgame/static/js/main.d677c663.js.map"
   },
   "entrypoints": [
-    "static/css/main.51fc411b.css",
-    "static/js/main.2181c990.js"
+    "static/css/main.9bffc139.css",
+    "static/js/main.d677c663.js"
   ]
 }
