@@ -122,7 +122,7 @@ function ComeUpWithItBrandName() {
                         isFinishGame && 
                         <>
                             <p className='comeUpWithItBrandName_finishText'>Поздравляю, ты ответил на все вопросы. Из них верно: {score}, неверно: {questions.length - score}.</p>
-                            <button className='comeUpWithItBrandName_button--game' onClick={() => window.location.reload()}>Повторить</button>
+                            <Link to='/СreateAnOffer' className='comeUpWithItBrandName_button--game'>Следующий этап</Link>
                         </>
 
                     }
