@@ -6,7 +6,15 @@ import './style.css';
 import { data, coordinateWords } from './data.js';
 import { useEffect, useMemo, useState } from 'react';
 
-
+function makeStyleButton(styles) {
+	return {
+		top: styles.x,
+		left: styles.y,
+		transform: `rotate(${styles.rotation}deg)`,
+		backgroundColor: styles.colorback,
+		color: styles.colorfont,
+	}
+}
 
 
 function СreateAnOffer() {
@@ -28,6 +36,7 @@ function СreateAnOffer() {
         <Header title='Придумай имя бренда'/>
             <div className='gameWindow'>
                 <h1 className='createAnOffer_gameTitle'>Собери из слов связную цель по SMART</h1>
+								<button className='createAnOffer_clue'>Подсказка</button>
                 <div className='createAnOffer-wrapper-single'>
                     {
                         wordsSingle.map((el, i) =>
@@ -38,7 +47,7 @@ function СreateAnOffer() {
 															newList.splice(i, 1);
 															setWordsSingle(() => [...newList]);
                             }
-                            } style={{top: el.coordinates.x, left: el.coordinates.y}} className='createAnOffer_button'>{el.text}
+                            } style={makeStyleButton(el.coordinates)} className='createAnOffer_button'>{el.text}
                           </button>)
                         
                     }
@@ -46,7 +55,9 @@ function СreateAnOffer() {
                 <div className='createAnOffer-wrapper-offer'>
 									{
 										words.map((el, i) =>
-											<button className='createAnOffer_button-offer' key={el.text}
+											<button
+												style={{backgroundColor: el.coordinates.colorback, color: el.coordinates.colorfont}}
+										    className='createAnOffer_button-offer' key={el.text}
 												onClick={() => {
 													setWordsSingle(() => [...wordsSingle, el]);
 													const newList = [...words];
